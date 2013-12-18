@@ -6,23 +6,48 @@
     <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../../konnor.js"></script>
     <script type="text/javascript">
+    	var commands = [];
         var commandPosition = -1;
+        /**
+        ** Execute commands from comandLine
+        **/
+        function execute(){
+        	var comandLine = document.getElementById("command");
+        	commands.reverse();
+        	commands.push(comandLine.value);
+        	commands.reverse();
+        	global.k.command.run(comandLine.value);
+        	comandLine.value = "";
+        }
+        /**
+        ** return commands in order
+        **/
+        
+       function getCommand(position){
+            var stack = commands;
+            if(stack[position] !== undefined){
+              return stack[position];
+            }else{
+              return null;
+            }
+       }
+        
         document.onkeydown = function (e) {
             var command = document.getElementById("command");            
             var keynum = e.which;
             if(keynum == 13){//Enter key
                 window.execute(command);
             }else if(keynum == 38){//UP KEY * error
-                var nextCommand = window.getCommand(commandPosition+1);
+                var nextCommand = getCommand(commandPosition+1);
                 if(nextCommand != null){
                     
                     command.value = nextCommand;
-                    if(commandPosition+1 < window.commands.length){
+                    if(commandPosition+1 < commands.length){
                         commandPosition ++;
                     }
                 }
             }else if(keynum == 40){//DOWN KEY
-                var nextCommand = window.getCommand(commandPosition-1);
+                var nextCommand = getCommand(commandPosition-1);
                 if(nextCommand != null){
                     command.value = nextCommand;
                     commandPosition --;
@@ -32,8 +57,7 @@
                         commandPosition --;
                     }
                 }
-            }
-            
+            }            
         };
     </script>
   </head>
@@ -50,7 +74,7 @@
           <tr>
               <td>
                   <input type="text" id="command" value =""/>
-                  <button onclick="window.execute(document.getElementById('command'));">Execute</button>                  
+                  <button onclick="execute();">Execute</button>                  
               </td>
               <td>
                   <button class="big_button" onclick="global.k.server.start()">Start Server</button>
