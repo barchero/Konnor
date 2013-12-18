@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Konnor Server</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../konnor.js"></script>
+    <script type="text/javascript">
+        var commandPosition = -1;
+        document.onkeydown = function (e) {
+            var command = document.getElementById("command");            
+            var keynum = e.which;
+            if(keynum == 13){//Enter key
+                window.execute(command);
+            }else if(keynum == 38){//UP KEY * error
+                var nextCommand = window.getCommand(commandPosition+1);
+                if(nextCommand != null){
+                    
+                    command.value = nextCommand;
+                    if(commandPosition+1 < window.commands.length){
+                        commandPosition ++;
+                    }
+                }
+            }else if(keynum == 40){//DOWN KEY
+                var nextCommand = window.getCommand(commandPosition-1);
+                if(nextCommand != null){
+                    command.value = nextCommand;
+                    commandPosition --;
+                }else{
+                    if(command.value != ""){
+                        command.value = "";
+                        commandPosition --;
+                    }
+                }
+            }
+            
+        };
+    </script>
+  </head>
+  <body>
+      <table>
+          <tr>
+              <td id="consoleTR">
+                  <div id="consoleContainer"></div>
+              </td>
+              <td>
+
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <input type="text" id="command" value =""/>
+                  <button onclick="window.execute(document.getElementById('command'));">Execute</button>                  
+              </td>
+              <td>
+                  <button class="big_button" onclick="global.k.server.start()">Start Server</button>
+              </td>
+          </tr>
+      </table>
+	
+  </body>
+</html>

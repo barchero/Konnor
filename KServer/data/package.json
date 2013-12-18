@@ -1,0 +1,42 @@
+{
+  "name": "Konnor",
+  "version": "0.0.1",
+  "description": "HTML5 RPG Game",
+  "main": "UI/html/index.html",
+  "dependencies": {
+    "appjs": "~0.0.20",
+    "mime": "~1.2.5",
+    "express": "~3.4.2",
+    "appjs-win32": "~0.0.20",
+    "html": "~0.0.7",
+    "socket.io": "~0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node --harmony konnor.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barchero/Konnor"
+  },
+  "keywords": [
+    "HTML5",
+    "RPG",
+    "game"
+  ],
+  "author": "Christian Bartrina Montes",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/barchero/Konnor/issues"
+  },
+  "window": {
+    "toolbar": false,
+    "resizable": false,
+    "icon": "./UI/icons/32.png",
+    "width": 785,
+    "height": 405
+  },
+  "webkit": {
+	"plugin": true
+  }
+}

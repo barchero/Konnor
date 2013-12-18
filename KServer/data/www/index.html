@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <style type="text/css">
+      pre {background-color:rgba(0,0,0,0.2); padding:10px;}
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    
+    <script>
+    $(function() {
+      var packet = 0;
+      
+      /*var conn_options = {
+        'sync disconnect on unload':false
+      };
+      var socket = io.connect("localhost",conn_options);*/
+      var socket = io.connect();
+      var $pre = $('pre');
+      
+      socket.on('load', function (data) {
+        
+        $pre.text($pre.text() + "Loading Package" + JSON.stringify(data) + '\n' );
+        socket.emit("loaded");
+      });
+      socket.on("stream", function(data){
+         packet++; 
+         //$pre.text($pre.text() + "Streaming Package" + JSON.stringify(data) + '\n' ); 
+          
+      });
+      setInterval(function(){
+        $("#fps").html(packet+" FPS");
+        packet = 0;          
+      },1000);
+    });
+
+    </script>
+    
+  </head>
+  <body>
+    <h1>socket.io example</h1>
+    <h1 id="fps"></h1>
+    <pre>..output here..
+      
+    </pre>
+  </body>
+</html>

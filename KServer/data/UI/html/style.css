@@ -1,0 +1,33 @@
+html
+{ 
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body
+{
+    margin: 0;
+    height: 100%;
+    font-family: FixedWidth;
+    background-color: #ddd;
+}
+#consoleContainer{
+    background-color: #fff;
+    color: #000;
+    width: 98%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 5px;
+}
+#consoleTR{
+    background-color: #fff;
+    width:600px;
+    height:350px;
+}
+.big_button{
+    width:273px;
+    height:41px;        
+}
+#command{
+    width:424px;
+}
