@@ -3,13 +3,13 @@ var Server = function(){
     this.threads = new Array();
     this.sockets = new Array();
     this.io = null;    
-    this.Thread = require("./thread.js");
+    //this.Thread = require("./thread.js");
     
 
     
     this.start = function(){
         var console = global.k.console;
-        global.k.moduleLoader.loadModules();
+
         
         
         

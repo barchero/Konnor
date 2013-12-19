@@ -73,11 +73,11 @@
           </tr>
           <tr>
               <td>
-                  <input type="text" id="command" value =""/>
-                  <button onclick="execute();">Execute</button>                  
+                  <input type="text" id="command" value ="" disabled="disabled"/>
+                  <button id="btn_execute" onclick="execute();" disabled="disabled">Execute</button>                  
               </td>
               <td>
-                  <button class="big_button" onclick="global.k.server.start()">Start Server</button>
+                  <button class="big_button" onclick="global.k.start()">Start Server</button>
               </td>
           </tr>
       </table>
